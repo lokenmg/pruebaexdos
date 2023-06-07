@@ -11,6 +11,6 @@ import org.uv.pruebaexamendos.models.Biblioteca;
  *
  * @author loken
  */
-public interface bibliotecaRepository extends JpaRepository<Biblioteca, Integer> {
+public interface BibliotecaRepository extends JpaRepository<Biblioteca, Integer>{
     
 }

@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uv.pruebaexamendos.models.Biblioteca;
-import org.uv.pruebaexamendos.repository.bibliotecaRepository;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.uv.pruebaexamendos.repository.BibliotecaRepository;
 
 /**
  *
@@ -31,7 +31,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 public class BibliotecaController {
 
     @Autowired
-    private bibliotecaRepository bibliotecaRepository;
+    private BibliotecaRepository bibliotecaRepository;
 
     @GetMapping
     public ResponseEntity<Page<Biblioteca>> listBibliotecas(Pageable pageable) {

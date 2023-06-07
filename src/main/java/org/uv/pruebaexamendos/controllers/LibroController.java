@@ -21,9 +21,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uv.pruebaexamendos.models.Libro;
 import org.uv.pruebaexamendos.repository.LibrosRepository;
-import org.uv.pruebaexamendos.repository.bibliotecaRepository;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.uv.pruebaexamendos.models.Biblioteca;
+import org.uv.pruebaexamendos.repository.BibliotecaRepository;
 
 /**
  *
@@ -37,7 +37,7 @@ public class LibroController {
     private LibrosRepository libroRepository;
 
     @Autowired
-    private bibliotecaRepository bibliotecaRepository;
+    private BibliotecaRepository bibliotecaRepository;
 
     @GetMapping
     public ResponseEntity<Page<Libro>> listarLibros(Pageable pageable) {
