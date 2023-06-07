@@ -38,6 +38,14 @@ public class Libro {
     @JsonProperty(access = Access.WRITE_ONLY)
     private Biblioteca biblioteca;
 
+    public Libro(LibroDTO libro) {
+        this.isbn = libro.getIsbn();
+        this.nombre = libro.getNombre();
+    }
+    
+    public Libro() {
+    }
+    
     public int getIsbn() {
         return isbn;
     }

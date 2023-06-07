@@ -35,6 +35,16 @@ public class Biblioteca {
     @OneToMany(mappedBy = "biblioteca", cascade = CascadeType.ALL)
     private Set<Libro> libros = new HashSet<>();
 
+    public Biblioteca() {
+    }
+
+    public Biblioteca(BibliotecaDTO biblioteca) {
+        this.id = biblioteca.getIdDTO();
+        this.nombre = biblioteca.getNombreDTO();
+    }
+    
+    
+
     public int getId() {
         return id;
     }

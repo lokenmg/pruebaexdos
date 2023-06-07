@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.uv.pruebaexamendos.models.Biblioteca;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.uv.pruebaexamendos.models.BibliotecaDTO;
 import org.uv.pruebaexamendos.repository.BibliotecaRepository;
 
 /**
@@ -39,7 +40,11 @@ public class BibliotecaController {
     }
 
     @PostMapping
-    public ResponseEntity<Biblioteca> saveBiblioteca(@RequestBody Biblioteca biblioteca) {
+    public ResponseEntity<Biblioteca> saveBiblioteca(@RequestBody BibliotecaDTO bibliotecaDTO) {
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setId(bibliotecaDTO.getIdDTO());
+        biblioteca.setNombre(bibliotecaDTO.getNombreDTO());
+        biblioteca.setLibros(bibliotecaDTO.getLibrosDTO());
         Biblioteca bibliotecaGuardada = bibliotecaRepository.save(biblioteca);
         URI ubicacion = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}")
                 .buildAndExpand(bibliotecaGuardada.getId()).toUri();
@@ -47,7 +52,11 @@ public class BibliotecaController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Biblioteca> actualizarBiblioteca(@PathVariable Integer id, @RequestBody Biblioteca biblioteca) {
+    public ResponseEntity<Biblioteca> actualizarBiblioteca(@PathVariable Integer id, @RequestBody BibliotecaDTO bibliotecaDTO) {
+        Biblioteca biblioteca = new Biblioteca();
+        biblioteca.setId(bibliotecaDTO.getIdDTO());
+        biblioteca.setNombre(bibliotecaDTO.getNombreDTO());
+        biblioteca.setLibros(bibliotecaDTO.getLibrosDTO());
         Optional<Biblioteca> bibliotecaOptional = bibliotecaRepository.findById(id);
 
         if (!bibliotecaOptional.isPresent()) {

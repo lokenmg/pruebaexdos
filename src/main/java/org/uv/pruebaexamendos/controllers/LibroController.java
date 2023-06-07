@@ -23,6 +23,7 @@ import org.uv.pruebaexamendos.models.Libro;
 import org.uv.pruebaexamendos.repository.LibrosRepository;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import org.uv.pruebaexamendos.models.Biblioteca;
+import org.uv.pruebaexamendos.models.LibroDTO;
 import org.uv.pruebaexamendos.repository.BibliotecaRepository;
 
 /**
@@ -45,7 +46,11 @@ public class LibroController {
     }
 
     @PostMapping
-    public ResponseEntity<Libro> guardarLibro(@RequestBody Libro libro) {
+    public ResponseEntity<Libro> guardarLibro(@RequestBody LibroDTO libroDTO) {
+        Libro libro =new Libro();
+        libro.setIsbn(libroDTO.getIsbn());
+        libro.setNombre(libroDTO.getNombre());
+        libro.setBiblioteca(libroDTO.getBiblioteca());
         Optional<Biblioteca> bibliotecaOptional = bibliotecaRepository.findById(libro.getBiblioteca().getId());
 
         if (!bibliotecaOptional.isPresent()) {
@@ -60,8 +65,12 @@ public class LibroController {
         return ResponseEntity.created(ubicacion).body(libroGuardado);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Libro> actualizarLibro(@RequestBody Libro libro, @PathVariable Integer isbn) {
+    @PutMapping("/{isbn}")
+    public ResponseEntity<Libro> actualizarLibro(@RequestBody LibroDTO libroDTO, @PathVariable Integer isbn) {
+        Libro libro =new Libro();
+        libro.setIsbn(libroDTO.getIsbn());
+        libro.setNombre(libroDTO.getNombre());
+        libro.setBiblioteca(libroDTO.getBiblioteca());
         Optional<Biblioteca> bibliotecaOptional = bibliotecaRepository.findById(libro.getBiblioteca().getId());
 
         if (!bibliotecaOptional.isPresent()) {
@@ -80,7 +89,7 @@ public class LibroController {
         return ResponseEntity.noContent().build();
     }
     
-    	@DeleteMapping("/{id}")
+    	@DeleteMapping("/{isbn}")
 	public ResponseEntity<Libro> eliminarLibro(@PathVariable Integer isbn){
 		Optional<Libro> libroOptional = libroRepository.findById(isbn);
 		
@@ -92,7 +101,7 @@ public class LibroController {
 		return ResponseEntity.noContent().build();
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{isbn}")
 	public ResponseEntity<Libro> obtenerLibroPorId(@PathVariable Integer isbn){
 		Optional<Libro> libroOptional = libroRepository.findById(isbn);
 		
