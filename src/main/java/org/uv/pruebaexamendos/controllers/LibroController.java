@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package org.uv.pruebaExamenDos.controllers;
+package org.uv.pruebaexamendos.controllers;
 
 import java.net.URI;
 import java.util.Optional;
@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.uv.pruebaExamenDos.models.Libro;
-import org.uv.pruebaExamenDos.repository.LibrosRepository;
-import org.uv.pruebaExamenDos.repository.bibliotecaRepository;
+import org.uv.pruebaexamendos.models.Libro;
+import org.uv.pruebaexamendos.repository.LibrosRepository;
+import org.uv.pruebaexamendos.repository.bibliotecaRepository;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import org.uv.pruebaExamenDos.models.Biblioteca;
+import org.uv.pruebaexamendos.models.Biblioteca;
 
 /**
  *

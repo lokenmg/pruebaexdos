@@ -1,4 +1,4 @@
-package org.uv.pruebaExamenDos;
+package org.uv.pruebaexamendos;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
